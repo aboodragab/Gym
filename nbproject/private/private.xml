@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/Payment.java</file>
-            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/Coachs.java</file>
-            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/LOGIN.java</file>
-            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/SPLY.java</file>
-            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/Members.java</file>
+            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/com/gym/model/Coach.java</file>
+            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/com/gym/model/Person.java</file>
+            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/com/gym/model/Member.java</file>
+            <file>file:/D:/GUI%20IN%20JAVA/Gym/src/com/gym/model/Payment.java</file>
         </group>
     </open-files>
 </project-private>
