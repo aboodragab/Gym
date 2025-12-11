@@ -17,6 +17,8 @@ public class SPLY extends javax.swing.JFrame {
      */
     public SPLY() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**

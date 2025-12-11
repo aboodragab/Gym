@@ -9,15 +9,8 @@ public class Member extends Person {
     private Date endDate;
     private int coachId;
 
-    public Member(int memberId, Date startDate, Date endDate, int coachId, int personId, String name, String phone, String address) {
-        super(personId, name, phone, address);
-        this.memberId = memberId;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.coachId = coachId;
-    }
-
-    public Member(int memberId, Date startDate, Date endDate, int coachId) {
+    public Member(int memberId, Date startDate, Date endDate, int coachId, int personId, int age, String name, String phone, String address) {
+        super(personId, age, name, phone, address);
         this.memberId = memberId;
         this.startDate = startDate;
         this.endDate = endDate;
