@@ -49,28 +49,66 @@ public class PaymentDAO {
             return false;
         }
     }
-    public ArrayList<Payment> getAllPayments() {
+    public ArrayList<Payment> getAllPayments() 
+    {
+           ArrayList<Payment> list = new ArrayList<>();
+
+            String sql = "SELECT pay.PaymentID, pay.Amount, pay.PaymentDate, pay.MemberID, p.Name " +
+                         "FROM Payments pay " +
+                         "INNER JOIN Member m ON pay.MemberID = m.MemberID " +
+                         "INNER JOIN Person p ON m.PersonID = p.PersonID";
+
+            try (Connection conn = DBConnection.getConnection()) {
+                PreparedStatement stmt = conn.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+
+                while (rs.next()) {
+                    Payment pay = new Payment(
+                        rs.getInt("PaymentID"),
+                        rs.getDate("PaymentDate"),
+                        rs.getDouble("Amount"),
+                        rs.getInt("MemberID")
+                    );
+
+                    pay.setMemberName(rs.getString("Name"));
+                    list.add(pay);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return list;
+    }
+    public ArrayList<Payment> searchPaymentsByName(String name) {
         ArrayList<Payment> list = new ArrayList<>();
-        String sql = "SELECT * FROM Payments"; 
-        
+
+        String sql = "SELECT pay.PaymentID, pay.Amount, pay.PaymentDate, pay.MemberID, p.Name " +
+                     "FROM Payments pay " +
+                     "INNER JOIN Member m ON pay.MemberID = m.MemberID " +
+                     "INNER JOIN Person p ON m.PersonID = p.PersonID " +
+                     "WHERE p.Name LIKE ?";
+
         try (Connection conn = DBConnection.getConnection()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, "%" + name + "%");
+
             ResultSet rs = stmt.executeQuery();
-            
             while (rs.next()) {
-                Payment p = new Payment(
+                Payment pay = new Payment(
                     rs.getInt("PaymentID"),
                     rs.getDate("PaymentDate"),
                     rs.getDouble("Amount"),
                     rs.getInt("MemberID")
                 );
-                list.add(p);
+                pay.setMemberName(rs.getString("Name"));
+                list.add(pay);
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
-    }
+}
+
+
 }
     
 

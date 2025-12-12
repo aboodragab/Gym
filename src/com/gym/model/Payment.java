@@ -2,11 +2,13 @@
 package com.gym.model;
 
 import java.sql.Date;
+
 public class Payment {
     private int paymentId;
     private Date paymentDate;
     private double amount;
     private int memberId;
+    private String memberName;
 
     public Payment(int paymentId, Date paymentDate, double amount, int memberId) {
         this.paymentId = paymentId;
@@ -14,7 +16,14 @@ public class Payment {
         this.amount = amount;
         this.memberId = memberId;
     }
+    public String getMemberName() {
+        return memberName;
+    }
 
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+    
     public int getPaymentId() {
         return paymentId;
     }

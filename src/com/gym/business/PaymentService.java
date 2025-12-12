@@ -14,6 +14,7 @@ public class PaymentService {
      {
          return paymentDAO.getAllPayments();
      }
+     
      public boolean removePayments(int paymentID)
      {
          return paymentDAO.deletePayment(paymentID);
@@ -21,5 +22,9 @@ public class PaymentService {
      public boolean edit(Payment p)
      {
          return paymentDAO.updatePayment(p);
+     }
+     public ArrayList<Payment>searchPayments(String name)
+     {
+         return paymentDAO.searchPaymentsByName(name);
      }
 }
