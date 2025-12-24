@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 public class DBConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/gymdb?useSSL=false";
-    private static final String USER = "root";
-    private static final String PASSWORD = "Aa0787014769";
+    private static final String URL ="jdbc:derby://localhost:1527/gym";
+    private static final String USER = "gym";
+    private static final String PASSWORD = "gym";
     public static Connection getConnection() {
         Connection con = null;
         try {
