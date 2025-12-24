@@ -1,0 +1,40 @@
+-- 1. Create the Database
+CREATE DATABASE IF NOT EXISTS GymManagement;
+USE GymManagement;
+
+-- 2. Create Person Table
+CREATE TABLE person (
+    PersonID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(50) NOT NULL,
+    Phone VARCHAR(20),
+    Address VARCHAR(50),
+    Age INT
+);
+
+-- 3. Create Coach Table
+CREATE TABLE coach (
+    CoachID INT PRIMARY KEY AUTO_INCREMENT,
+    PersonID INT,
+    ExperienceYears INT,
+    CONSTRAINT fk_coach_person FOREIGN KEY (PersonID) REFERENCES person(PersonID) ON DELETE CASCADE
+);
+
+-- 4. Create Member Table
+CREATE TABLE member (
+    MemberID INT PRIMARY KEY AUTO_INCREMENT,
+    StartDate DATE,
+    EndDate DATE,
+    PersonID INT,
+    CoachID INT,
+    CONSTRAINT fk_member_person FOREIGN KEY (PersonID) REFERENCES person(PersonID) ON DELETE CASCADE,
+    CONSTRAINT fk_member_coach FOREIGN KEY (CoachID) REFERENCES coach(CoachID) ON DELETE CASCADE
+);
+
+-- 5. Create Payments Table
+CREATE TABLE payments (
+    PaymentID INT PRIMARY KEY AUTO_INCREMENT,
+    PaymentDate DATE,
+    Amount DECIMAL(10,2),
+    MemberID INT,
+    CONSTRAINT fk_payments_member FOREIGN KEY (MemberID) REFERENCES member(MemberID) ON DELETE CASCADE
+);
